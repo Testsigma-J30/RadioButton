@@ -17,7 +17,7 @@
             background: white;
             border-radius: 12px;
             padding: 24px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
         }
 
         h2 {
@@ -39,12 +39,7 @@
             border: 1px solid #d1d5db;
             border-radius: 8px;
             background: white;
-            cursor: pointer;
             transition: all 0.2s ease;
-        }
-
-        .radio-option:hover {
-            border-color: #2563eb;
         }
 
         .radio-option.selected {
@@ -53,7 +48,7 @@
             font-weight: 600;
         }
 
-        .radio-option input[type="radio"] {
+        .radio-option label {
             cursor: pointer;
         }
 
@@ -93,7 +88,7 @@
     <h2>Automation Testing Demo - Radio Group</h2>
 
     <p>
-        This page is intentionally created for automation testing of radio group selection actions.
+        This page is intentionally created for automation testing.
     </p>
 
     <div
@@ -103,31 +98,59 @@
         aria-label="User Role Selection"
         data-testid="role-radio-group">
 
-        <label class="radio-option" data-testid="role-admin-label">Admin
-        </label><input
+        <div class="radio-option">
+            <input
+                id="role-admin"
                 type="radio"
                 name="userRole"
                 value="Admin"
                 data-testid="role-admin">
-        <label class="radio-option" data-testid="role-manager-label">Manager
-        </label><input
+
+            <label for="role-admin">
+                Admin
+            </label>
+        </div>
+
+        <div class="radio-option">
+            <input
+                id="role-manager"
                 type="radio"
                 name="userRole"
                 value="Manager"
                 data-testid="role-manager">
-        <label class="radio-option" data-testid="role-test-data-user-label">Premium test-data User
-        </label><input
+
+            <label for="role-manager">
+                Manager
+            </label>
+        </div>
+
+        <div class="radio-option">
+            <input
+                id="role-test-data-user"
                 type="radio"
                 name="userRole"
                 value="Premium test-data User"
                 data-testid="role-test-data-user">
-        <label class="radio-option" data-testid="role-guest-label">Guest    
-        </label><input
+
+            <label for="role-test-data-user">
+                Premium test-data User
+            </label>
+        </div>
+
+        <div class="radio-option">
+            <input
+                id="role-guest"
                 type="radio"
                 name="userRole"
                 value="Guest"
                 data-testid="role-guest">
+
+            <label for="role-guest">
+                Guest
+            </label>
         </div>
+
+    </div>
 
     <div
         id="selection-status"
@@ -169,7 +192,6 @@
 </div>
 
 <script>
-
     const radios = document.querySelectorAll(
         '#ui-identifier input[type="radio"]'
     );
@@ -188,17 +210,13 @@
                     option.classList.remove('selected')
                 );
 
-            radio
-                .closest('.radio-option')
-                .classList.add('selected');
+            radio.parentElement.classList.add('selected');
 
             status.textContent =
                 `Selected Role: ${radio.value}`;
-
         });
 
     });
-
 </script>
 
 </body>
